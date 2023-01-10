@@ -2,7 +2,7 @@
 # vi: set ft=ruby  :
 
 machines = {
-  "master" => {"memory" => "1024", "cpu" => "1", "ip" => "100", "image" => "bento/ubuntu-22.04"},
+  "master1" => {"memory" => "1024", "cpu" => "1", "ip" => "100", "image" => "bento/ubuntu-22.04"},
   "node01" => {"memory" => "1024", "cpu" => "1", "ip" => "101", "image" => "bento/ubuntu-22.04"},
   "node02" => {"memory" => "1024", "cpu" => "1", "ip" => "102", "image" => "bento/ubuntu-22.04"}
 }
@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
       end
       machine.vm.provision "shell", path: "docker.sh"
       
-      if "#{name}" == "master"
+      if "#{name}" == "master1"
         machine.vm.provision "shell", path: "master.sh"
       else
         machine.vm.provision "shell", path: "worker.sh"
